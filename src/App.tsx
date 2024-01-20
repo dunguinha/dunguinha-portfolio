@@ -1,8 +1,15 @@
 import { useState } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import {
-  GroupBox, Window, WindowContent, styleReset, AppBar, Button, Handle, Toolbar, Checkbox,
+  GroupBox,
+  Window,
+  WindowContent,
+  AppBar,
+  Button,
+  Handle,
+  Toolbar,
+  Checkbox,
   Tab,
   TabBody,
   Tabs,
@@ -12,44 +19,33 @@ import {
 } from 'react95';
 import original from 'react95/dist/themes/original';
 import { TypeAnimation } from 'react-type-animation';
-
-const GlobalStyles = createGlobalStyle`
-  ${styleReset}
-  @font-face {
-    font-family: 'ms_sans_serif';
-    font-weight: 400;
-    font-style: normal
-  }
-  @font-face {
-    font-family: 'ms_sans_serif';
-    font-weight: bold;
-    font-style: normal
-  }
-  body {
-    font-family: 'ms_sans_serif';
-  }
-`;
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import myImage from './assets/tiktk.jpeg';
 
 const App = () => {
-  const [state, setState] = useState({ activeTab: 'Shoes' });
-  // const [about, setAbout] = useState('');
+  const [state, setState] = useState({ activeTab: 'TikTok Downloader' });
+  const [about, setAbout] = useState('0');
   const { activeTab } = state;
 
   const handleChange = (value: string) => setState({ activeTab: value });
+  const handleChange_2 = (value: string) => setAbout(value);
 
-  // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  //   anchor.addEventListener('click', function (e) {
-  //     e.preventDefault();
+  const codeString = `const TikTkSaver = {
+    nome: 'Download de Vídeos do TikTok',
+    tecnologias: ['React', 'Vite', 'API', 'Typescript'],
+    descricao: 'Desenvolvi uma aplicação que permite o download simplificado de vídeos do TikTok.',
+    funcionalidades: [
+      'Busca intuitiva de vídeos utilizando palavras-chave, hashtags ou nomes de usuários.',
+      'Download fácil e rápido dos vídeos desejados.',
+      'Interface amigável e responsiva proporcionando uma experiência de usuário agradável.',
+      'Com tradução para três idiomas: inglês, espanhol e português.',
+    ],
+  };`;
 
-  //     document.querySelector(this.getAttribute('href')).scrollIntoView({
-  //       behavior: 'smooth'
-  //     });
-  //   });
-  // });
   return (
     <>
       <ThemeProvider theme={original}>
-        <GlobalStyles />
         <div>
           <AppBar style={{ justifyContent: 'space-between', flexDirection: 'row', zIndex: '100' }}>
             <p style={{ lineHeight: 1.3, fontSize: 30, padding: 5 }}>
@@ -62,12 +58,17 @@ const App = () => {
                   Languages
                 </Button>
               </a>
-              <Button variant='menu'>
-                Projects
-              </Button>
-              <Button variant='menu'>
-                About me
-              </Button>
+              <a href="#projects">
+
+                <Button variant='menu'>
+                  Projects
+                </Button>
+              </a>
+              <a href="#about-me">
+                <Button variant='menu'>
+                  About me
+                </Button>
+              </a>
               <Handle size={35} />
             </Toolbar>
           </AppBar>
@@ -84,25 +85,25 @@ const App = () => {
             </WindowContent>
           </Window>
           <Window className='relative bottom-8 right-28'>
-          <TypeAnimation
-                  sequence={[
-                    'Atualmente focando em Typescript',
-                    1000,
-                    'Atualmente focando em MYSQL',
-                    1000,
-                    'Atualmente focando em Angular',
-                    1000,
-                    'Atualmente focando em React',
-                    1000,
-                  ]}
-                  wrapper="span"
-                  speed={25}
-                  style={{ fontSize: '2em', display: 'inline-block' }}
-                  repeat={Infinity}
-                />
+            <TypeAnimation
+              sequence={[
+                'Atualmente focando em Typescript',
+                1000,
+                'Atualmente focando em MYSQL',
+                1000,
+                'Atualmente focando em Angular',
+                1000,
+                'Atualmente focando em React',
+                1000,
+              ]}
+              wrapper="span"
+              speed={25}
+              style={{ fontSize: '2em', display: 'inline-block' }}
+              repeat={Infinity}
+            />
           </Window>
         </div>
-        <div id='languages'>
+        <div id='projects' style={{ display: 'flex', flexDirection: 'row', textWrap: 'nowrap' }}>
           <Window className='w-full'>
             <WindowHeader>Languages</WindowHeader>
             <WindowContent>
@@ -117,32 +118,40 @@ const App = () => {
                 <Tab value='6'>project coming soon</Tab>
                 <Tab value='7'>project coming soon</Tab>
               </Tabs>
-              <TabBody >
-                <p>
-                  Coming son
-                </p>
-                <Window className='w-full h-10'>
-                  <WindowContent className='w-full h-full'>
-                    <img src='' className='w-full h-full'>
-                    </img>
-                  </WindowContent>
-                </Window>
+              <TabBody>
+                <Avatar square size={'100%'} className='p-1'>
+                  <img src={myImage} />
+                </Avatar>
               </TabBody>
             </WindowContent>
           </Window>
+          <Window className='items-center w-1/2'>
+            <WindowContent>
+              <GroupBox label={state.activeTab} style={{ fontSize: 42 }} className='w-full'> 
+                <SyntaxHighlighter 
+                language="javascript" 
+                style={nightOwl}
+                customStyle={{fontSize: 15, borderRadius: 10}}
+                wrapLongLines
+                >
+                  {codeString}
+                </SyntaxHighlighter>
+              </GroupBox>
+            </WindowContent>
+          </Window>
         </div>
-        <div className='mt-44'>
+        <div className='mt-44' id='about-me'>
           <Window className='w-full'>
             <WindowHeader>About me</WindowHeader>
             <WindowContent style={{ display: 'flex', flexDirection: 'row' }}>
               <div className='w-full'>
-                <Tabs value={activeTab} onChange={handleChange}>
-                  <Tab value={0}>Shoes</Tab>
-                  <Tab value={1}>Accesories</Tab>
-                  <Tab value={2}>Clothing</Tab>
+                <Tabs value={about} onChange={handleChange_2}>
+                  <Tab value={'0'}>Who i am?</Tab>
+                  <Tab value={'1'}>Experiences</Tab>
+                  <Tab value={'2'}>Contact</Tab>
                 </Tabs>
                 <TabBody style={{ height: 300 }}>
-                  {activeTab === '0' && (
+                  {about === '0' && (
                     <div>
                       <GroupBox label='Order:'>
                         <div style={{ padding: '0.5em 0 0.5em 0' }}>Amount:</div>
@@ -158,12 +167,12 @@ const App = () => {
                       </GroupBox>
                     </div>
                   )}
-                  {activeTab === '1' && (
+                  {about === '1' && (
                     <div>
                       <div>Coming soon</div>
                     </div>
                   )}
-                  {activeTab === '2' && (
+                  {about === '2' && (
                     <div>
                       <div>Coming soon</div>
                     </div>
