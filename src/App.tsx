@@ -11,6 +11,7 @@ import {
   Avatar,
 } from 'react95';
 import original from 'react95/dist/themes/original';
+import { TypeAnimation } from 'react-type-animation';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -64,11 +65,14 @@ const App = () => {
               <Button variant='menu'>
                 Projects
               </Button>
+              <Button variant='menu'>
+                About me
+              </Button>
               <Handle size={35} />
             </Toolbar>
           </AppBar>
         </div>
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center h-screen flex-col'>
           <Window style={{ display: 'flex', flexDirection: 'row' }} className='items-center'>
             <Avatar square size={200} className='p-1'>
               <img src='https://media.licdn.com/dms/image/D4D03AQFV7DnPw8VoeQ/profile-displayphoto-shrink_200_200/0/1696619751143?e=1710979200&v=beta&t=MFDsOko_STeUWo8zWYFViB5YTFV7iqPQ8CDSgg4pPLQ' />
@@ -78,6 +82,24 @@ const App = () => {
                 Hey! My name is Cristhian Felipe!
               </GroupBox>
             </WindowContent>
+          </Window>
+          <Window className='relative bottom-8 right-28'>
+          <TypeAnimation
+                  sequence={[
+                    'Atualmente focando em Typescript',
+                    1000,
+                    'Atualmente focando em MYSQL',
+                    1000,
+                    'Atualmente focando em Angular',
+                    1000,
+                    'Atualmente focando em React',
+                    1000,
+                  ]}
+                  wrapper="span"
+                  speed={25}
+                  style={{ fontSize: '2em', display: 'inline-block' }}
+                  repeat={Infinity}
+                />
           </Window>
         </div>
         <div id='languages'>
