@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import {
@@ -31,20 +31,20 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
   const [state, setState] = useState({ activeTab: 'Shoes' });
-  const [about, setAbout] = useState('');
+  // const [about, setAbout] = useState('');
   const { activeTab } = state;
 
   const handleChange = (value: string) => setState({ activeTab: value });
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
+  // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  //   anchor.addEventListener('click', function (e) {
+  //     e.preventDefault();
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+  //     document.querySelector(this.getAttribute('href')).scrollIntoView({
+  //       behavior: 'smooth'
+  //     });
+  //   });
+  // });
   return (
     <>
       <ThemeProvider theme={original}>
