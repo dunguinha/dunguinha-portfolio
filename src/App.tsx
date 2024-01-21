@@ -21,27 +21,25 @@ import original from 'react95/dist/themes/original';
 import { TypeAnimation } from 'react-type-animation';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import myImage from './assets/tiktk.jpeg';
+import tikTk from './assets/tikTk.png';
+import cepSearch from './assets/cepSearch.png'
+import pokedex from './assets/pokedex.png';
+import rjTecnologia from './assets/rjTecnologia.png'
 
-const App = () => {
-  const [state, setState] = useState({ activeTab: 'TikTok Downloader' });
+
+export default function App() {
+  const [activeTabProjects, setActiveTabProjects] = useState({ activeTab: 'TikTok Downloader' });
   const [about, setAbout] = useState('0');
-  const { activeTab } = state;
+  const { activeTab } = activeTabProjects;
 
-  const handleChange = (value: string) => setState({ activeTab: value });
+  const handleChange = (value: string) => setActiveTabProjects({ activeTab: value });
   const handleChange_2 = (value: string) => setAbout(value);
 
-  const codeString = `const TikTkSaver = {
-    nome: 'Download de Vídeos do TikTok',
-    tecnologias: ['React', 'Vite', 'API', 'Typescript'],
-    descricao: 'Desenvolvi uma aplicação que permite o download simplificado de vídeos do TikTok.',
-    funcionalidades: [
-      'Busca intuitiva de vídeos utilizando palavras-chave, hashtags ou nomes de usuários.',
-      'Download fácil e rápido dos vídeos desejados.',
-      'Interface amigável e responsiva proporcionando uma experiência de usuário agradável.',
-      'Com tradução para três idiomas: inglês, espanhol e português.',
-    ],
-  };`;
+  const tiTkSaverCodeBlock = `O "TikTkSaver" é uma aplicação desenvolvida com React, Vite, API e Typescript, oferecendo um download simplificado de vídeos do TikTok. Com funcionalidades como busca intuitiva, download fácil, interface responsiva e suporte a três idiomas (inglês, espanhol e português), proporciona uma experiência de usuário agradável e eficiente.`;
+  const rjTecnologiaCodeBlock = 'O website da "Rj Tecnologia" é uma plataforma moderna construída em React, oferecendo uma experiência online para os clientes da provedora de internet local. Com uma interface intuitiva e responsiva, os usuários podem explorar planos de internet, verificar cobertura, e contatar a empresa de forma fácil. O site também inclui informações sobre a empresa.'
+  const pokedexCodeBlock = 'A Pokedex é uma aplicação web desenvolvida com HTML, CSS e JavaScript, que utiliza uma API pública de Pokemon para exibir informações abrangentes sobre diferentes Pokémon. Os recursos incluem uma interface visualmente atraente, busca por nome ou número de Pokémon, exibição de detalhes como tipo, habilidades e estatísticas. Com uma navegação intuitiva, proporciona aos usuários uma experiência envolvente e informativa ao explorar o vasto mundo dos Pokémon.';
+  const cepSearchCodeBlock = 'O "CEP Search" é uma aplicação React que permite aos usuários buscar informações detalhadas utilizando CEPs. Integrando-se a uma API pública, oferece uma experiência simples e intuitiva. Os principais recursos incluem busca rápida, exibição de detalhes do endereço e uma interface amigável, tornando a obtenção de informações de CEP fácil e eficiente.';
+
 
   return (
     <>
@@ -87,13 +85,13 @@ const App = () => {
           <Window className='relative bottom-8 right-28'>
             <TypeAnimation
               sequence={[
-                'Atualmente focando em Typescript',
+                'Currently focused on Typescript',
                 1000,
-                'Atualmente focando em MYSQL',
+                'Currently focused on MYSQL',
                 1000,
-                'Atualmente focando em Angular',
+                'Currently focused on Angular',
                 1000,
-                'Atualmente focando em React',
+                'Currently focused on React',
                 1000,
               ]}
               wrapper="span"
@@ -103,39 +101,129 @@ const App = () => {
             />
           </Window>
         </div>
-        <div id='projects' style={{ display: 'flex', flexDirection: 'row', textWrap: 'nowrap' }}>
+        <div id='projects' style={{ display: 'flex', flexDirection: 'row' }}>
           <Window className='w-full'>
-            <WindowHeader>Languages</WindowHeader>
+            <WindowHeader>Projects</WindowHeader>
             <WindowContent>
-              <Tabs rows={2} value={activeTab} onChange={handleChange}>
-                <Tab value='TikTok Downloader'>TikTok Downloader</Tab>
-                <Tab value='CEP Consulter'>CEP Consulter</Tab>
-                <Tab value='1'>project coming soon</Tab>
-                <Tab value='2'>project coming soon</Tab>
-                <Tab value='3'>project coming soon</Tab>
-                <Tab value='4'>project coming soon</Tab>
-                <Tab value='5'>project coming soon</Tab>
-                <Tab value='6'>project coming soon</Tab>
-                <Tab value='7'>project coming soon</Tab>
+              <Tabs rows={1} value={activeTab} onChange={handleChange}>
+                <Tab value='TikTok Downloader' className='truncate'>TikTok Downloader</Tab>
+                <Tab value='CEP Search' className='truncate'>CEP Search</Tab>
+                <Tab value='Rj Tecnologia' className='truncate'>Rj Tecnologia</Tab>
+                <Tab value='Pokedex' className='truncate'>Pokedex</Tab>
+                <Tab value='Checkers Game' className='truncate'>Checkers Game</Tab>
               </Tabs>
               <TabBody>
-                <Avatar square size={'100%'} className='p-1'>
-                  <img src={myImage} />
-                </Avatar>
+                {
+                  activeTabProjects.activeTab === 'TikTok Downloader' &&
+                  <a href="https://www.tiktksaver.com" target='_blank'>
+                    <Avatar square size={'100%'} className='p-1 cursor-pointer'>
+                      <img src={tikTk} />
+                    </Avatar>
+                  </a>
+                }
+                {
+                  activeTabProjects.activeTab === 'CEP Search' &&
+                  <a href="https://cep-search-xi.vercel.app/" target='_blank'>
+                    <Avatar square size={'100%'} className='p-1 cursor-pointer'>
+                      <img src={cepSearch} />
+                    </Avatar>
+                  </a>
+                }
+                {
+                  activeTabProjects.activeTab === 'Rj Tecnologia' &&
+                  <a href="https://rj-tecnologia-website-h56qt87js-nosycolg.vercel.app/" target='_blank'>
+                    <Avatar square size={'100%'} className='p-1 cursor-pointer'>
+                      <img src={rjTecnologia} />
+                    </Avatar>
+                  </a>
+                }
+                {
+                  activeTabProjects.activeTab === 'Pokedex' &&
+                  <a href="https://pokedex-main-drab.vercel.app/" target='_blank'>
+                    <Avatar square size={'100%'} className='p-1 cursor-pointer'>
+                      <img src={pokedex} />
+                    </Avatar>
+                  </a>
+                }
               </TabBody>
             </WindowContent>
           </Window>
           <Window className='items-center w-1/2'>
             <WindowContent>
-              <GroupBox label={state.activeTab} style={{ fontSize: 42 }} className='w-full'> 
-                <SyntaxHighlighter 
-                language="javascript" 
-                style={nightOwl}
-                customStyle={{fontSize: 15, borderRadius: 10}}
-                wrapLongLines
-                >
-                  {codeString}
-                </SyntaxHighlighter>
+              <GroupBox label={activeTabProjects.activeTab} style={{ fontSize: 42 }} className='w-full'>
+                {
+                  activeTabProjects.activeTab === 'TikTok Downloader' &&
+                  <div>
+                    <SyntaxHighlighter
+                      language="python"
+                      style={nightOwl}
+                      customStyle={{ fontSize: 20, borderRadius: 10 }}
+                      wrapLongLines
+                    >
+                      {tiTkSaverCodeBlock}
+                    </SyntaxHighlighter>
+                    <div className='flex justify-center items-center gap-2 pt-5'>
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' />
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' style={{ backgroundColor: '#282B30' }} />
+                    </div>
+                    <Button fullWidth>Acess Github Project</Button>
+                  </div>
+                }
+                {
+                  activeTabProjects.activeTab === 'CEP Search' &&
+                  <div>
+                    <SyntaxHighlighter
+                      language="python"
+                      style={nightOwl}
+                      customStyle={{ fontSize: 20, borderRadius: 10 }}
+                      wrapLongLines
+                    >
+                      {cepSearchCodeBlock}
+                    </SyntaxHighlighter>
+                    <div className='flex justify-center items-center gap-2 pt-5'>
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' />
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' style={{ backgroundColor: '#282B30' }} />
+                    </div>
+                    <Button fullWidth>Acess Github Project</Button>
+                  </div>
+                }
+                {
+                  activeTabProjects.activeTab === 'Rj Tecnologia' &&
+                  <div>
+                    <SyntaxHighlighter
+                      language="python"
+                      style={nightOwl}
+                      customStyle={{ fontSize: 20, borderRadius: 10 }}
+                      wrapLongLines
+                    >
+                      {rjTecnologiaCodeBlock}
+                    </SyntaxHighlighter>
+                    <div className='flex justify-center items-center gap-2 pt-5'>
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' />
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' style={{ backgroundColor: '#282B30' }} />
+                    </div>
+                    <Button fullWidth>Acess Github Project</Button>
+                  </div>
+                }
+                {
+                  activeTabProjects.activeTab === 'Pokedex' &&
+                  <div>
+                    <SyntaxHighlighter
+                      language="python"
+                      style={nightOwl}
+                      customStyle={{ fontSize: 20, borderRadius: 10 }}
+                      wrapLongLines
+                    >
+                      {pokedexCodeBlock}
+                    </SyntaxHighlighter>
+                    <div className='flex justify-center items-center gap-2 pt-5'>
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' />
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' />
+                      <Avatar square size={70} src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' />
+                    </div>
+                    <Button fullWidth>Acess Github Project</Button>
+                  </div>
+                }
               </GroupBox>
             </WindowContent>
           </Window>
@@ -186,5 +274,3 @@ const App = () => {
     </>
   )
 }
-
-export default App;
