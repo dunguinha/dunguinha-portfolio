@@ -9,12 +9,10 @@ import {
   Button,
   Handle,
   Toolbar,
-  Checkbox,
   Tab,
   TabBody,
   Tabs,
   WindowHeader,
-  NumberInput,
   Avatar,
   TextInput,
 } from 'react95';
@@ -29,6 +27,8 @@ import tikTk from './assets/tikTk.png';
 import cepSearch from './assets/cepSearch.png'
 import pokedex from './assets/pokedex.png';
 import rjTecnologia from './assets/rjTecnologia.png'
+
+import profile from './assets/1696619751143.jpeg'
 
 export default function App() {
   const [activeTabProjects, setActiveTabProjects] = useState({ activeTab: 'TikTok Downloader' });
@@ -49,8 +49,7 @@ export default function App() {
       cardTitle: "CAMERITE",
       cardSubtitle: "Software Developer",
       cardDetailedText: `
-      Ingressei na Camerite em março de 2023 como desenvolvedor de software, focando em tecnologias como Angular, React e JavaScript para o desenvolvimento de interfaces web responsivas. Além disso, explorei o universo do desenvolvimento mobile usando React Native. Destaquei-me na gestão eficiente de bancos de dados relacionais utilizando MYSQL e Sequelize, aprimorando a modelagem e implementação de esquemas. A cultura colaborativa da empresa e o incentivo ao aprendizado contínuo contribuíram significativamente para meu crescimento profissional.
-      `,
+      I joined Camerite in March 2023 as a software developer, focusing on technologies such as Angular, React, and JavaScript for developing responsive web interfaces. Additionally, I explored the realm of mobile development using React Native. I excelled in efficiently managing relational databases using MYSQL and Sequelize, enhancing schema modeling and implementation. The collaborative culture of the company and the encouragement of continuous learning significantly contributed to my professional growth.      `,
     }
   ];
 
@@ -87,7 +86,7 @@ export default function App() {
         <div className='flex justify-center items-center h-screen flex-col'>
           <Window style={{ display: 'flex', flexDirection: 'row' }} className='items-center'>
             <Avatar square size={200} className='p-1'>
-              <img src='https://media.licdn.com/dms/image/D4D03AQFV7DnPw8VoeQ/profile-displayphoto-shrink_200_200/0/1696619751143?e=1710979200&v=beta&t=MFDsOko_STeUWo8zWYFViB5YTFV7iqPQ8CDSgg4pPLQ' />
+              <img src={profile} />
             </Avatar>
             <WindowContent>
               <GroupBox label='Apresentation' style={{ fontSize: 42 }}>
@@ -264,13 +263,7 @@ export default function App() {
                     <div>
                       <WindowContent>
                         <GroupBox label='Apresentation' style={{ fontSize: 22 }}>
-                        Olá, meu nome é Cristhian Felipe da Silva, tenho 18 anos e sou um autodidata dedicado ao aprendizado desde os 16. Nasci em São Paulo e cresci em Recife, Pernambuco.
-
-Minha jornada no mundo do conhecimento começou cedo, quando decidi assumir as rédeas da minha educação aos 16 anos. O autodidatismo tornou-se não apenas um método, mas uma filosofia de vida para mim. Essa abordagem me permitiu explorar áreas que genuinamente me interessam, desenvolvendo habilidades práticas e conhecimentos que considero fundamentais.
-
-Atualmente, mantenho meu foco em aprimorar habilidades relacionadas à tecnologia e programação, uma paixão que cresceu naturalmente ao longo dos anos. Estou sempre em busca de desafios que me permitam expandir meu conhecimento e contribuir para projetos significativos.
-
-Embora minha trajetória seja breve, cada passo tem sido marcado por um compromisso inabalável com o aprendizado contínuo. Estou ansioso para explorar novas oportunidades e desafios, aproveitando ao máximo cada experiência que a vida e a aprendizagem autodidata têm a oferecer.
+                        Hello, my name is Cristhian Felipe da Silva, I'm 18 years old and I am a self-taught individual dedicated to learning since I was 16. I was born in São Paulo and grew up in Recife, Pernambuco. My journey in the world of knowledge began early when I decided to take control of my education at the age of 16. Self-learning has become not only a method but a philosophy of life for me. This approach has allowed me to explore areas that genuinely interest me, developing practical skills and knowledge that I consider fundamental. Currently, I am focused on enhancing skills related to technology and programming, a passion that has naturally grown over the years. I am always seeking challenges that allow me to expand my knowledge and contribute to significant projects. Although my journey is brief, each step has been marked by an unwavering commitment to continuous learning. I am eager to explore new opportunities and challenges, making the most of every experience that life and self-directed learning have to offer.
                         </GroupBox>
                       </WindowContent>
                     </div>
